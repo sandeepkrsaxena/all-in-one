@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-lg-3"><h1>Users</h1></div>
+    <div class="col-lg-3 offset-lg-6 text-right">
+       <input type="text" placeholder="Search by name..." [(ngModel)]="nameSearch" class="form-control" />
+    </div>
+</div>
+<table class="table border mb-5 mt-3">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">S. No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Website</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let userList of users | filter:nameSearch" >
+        <th scope="row">{{userList.id}}</th>
+        <td>{{userList.name}}</td>
+        <td>{{userList.email}}</td>
+        <td>{{userList.website}}</td>
+        <td><a [routerLink]="['/users', userList.id]" >View</a></td>
+      </tr>
+     
+      
+    </tbody>
+  </table>
+  
+  
+<!-- <ul class="list-group mb-5 mt-3">
+    <li *ngFor="let userList of users" class="list-group-item">
+       <a [routerLink]="['/users', userList.id]" >{{userList.username}}</a>
+    </li>
+</ul> -->

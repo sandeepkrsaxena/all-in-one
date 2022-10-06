@@ -1,0 +1,93 @@
+<div class="container mb-5">
+    <div class="ror">
+    <div class="col-md-6">
+     <div class="card">
+        <div *ngIf="postSuccess" class="alert alert-success mx-3 mt-4" role="alert">
+            This is a success alert—check it out!
+          </div>
+          <div *ngIf="errorMessage"  class="alert alert-danger  mx-3 mt-4" role="alert">
+            {{errorMessage}}
+          </div>
+          
+       <h2 class="card-title pl-4">User Registration</h2>
+        <div class="card-body py-md-4">
+         <form  [formGroup]="userPostDetails" (ngSubmit)="usersPostDetailsSumit(userPostDetails.value)">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input formControlName="name" type="text" class="form-control" id="name" placeholder="Name">
+                   </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" formControlName="profile" class="form-control" id="name" placeholder="Profile">
+                   </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" formControlName="city" class="form-control" id="name" placeholder="City">
+                   </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" formControlName="address" class="form-control" id="name" placeholder="Address">
+                   </div>
+                </div>
+            </div>
+          
+     
+     <div class="d-flex flex-row align-items-center justify-content-between">
+       
+                                  <button [disabled]="  userPostDetails.invalid" type="submit" class="btn btn-primary">{{editMode? "Edit User" : "Add User"}}</button>
+            </div>
+         </form>
+       </div>
+    </div>
+  </div>
+  </div>
+
+
+  <table class="table border mb-5 mt-3">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">S.No.</th>
+        <th scope="col">Name</th>
+        <th scope="col">Profile</th>
+        <th scope="col">City</th>
+        <th scope="col">Address</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let userList of getUserData; index as i" >
+        <th scope="row">{{i+1}}</th>
+        <td>{{userList.name}}</td>
+        <td>{{userList.profile}}</td>
+        <td>{{userList.city}}</td>
+        <td>{{userList.address}}</td>
+        <td>
+            <button type="button" (click)="removeData(userList.userId)" class="btn btn-danger btn-small">Remove</button>
+            &nbsp;<a class="btn btn-success text-white"
+            [routerLink]="['/crud-app', userList.userId]"
+            [queryParams]="{name:userList.name}"
+             type="button">View</a>&nbsp;
+            <button (click)="updateUser(userList.userId, i)" class="btn btn-info" type="button">Edit</button>
+        </td>
+      </tr>
+
+      
+        <ng-container *ngIf="dataLoadMode">Data is loading...</ng-container>
+        <ng-container *ngIf="noData">Sorry there is no record available</ng-container>
+
+        
+      
+
+      
+     
+      
+    </tbody>
+  </table>
+
+  </div>

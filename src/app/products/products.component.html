@@ -1,0 +1,18 @@
+<div class="row">
+    <h1 class="mt-3 mb-3">Products</h1>
+</div>
+<div class="row mb-5">
+    <ng-container *ngFor="let item of products">
+        <div class="col-md-4 mt-2 mb-3">
+            <div class="card">
+                <a [routerLink]="['/products', item.id]" ><img class="card-img-top productsImg" [src]="item.image" alt="Card image cap"></a>
+                <div class="card-body">
+                  <h5 class="card-title">{{item.title | textlimit:25}}</h5>
+                  <p class="card-text">{{item.description | textlimit:60}}</p>
+                  <strong class="mb-3 d-block">Price Rs.{{item.price}}</strong>
+                  <button mat-raised-button class="w-100" (click)="addProduct(item)" color="primary">Add to Cart</button>
+                </div>
+              </div>
+        </div>
+    </ng-container>
+</div> 

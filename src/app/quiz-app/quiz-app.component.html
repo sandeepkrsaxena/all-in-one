@@ -1,0 +1,54 @@
+<div class="container mt-3 mb-5" *ngIf="!quizIsCompleted">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10 col-lg-10">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="mb-1">Hi {{userName}}</h3>
+                    <p class="mb-4">Now you can start quiz test best of luck.</p>
+                </div>
+                <div class="col-md-6 text-right"><div style="font-size: 20px;" class="font-weight-bold text-primary">Current Score: {{score}}</div></div>
+            </div>
+            <div class="border">
+                <div class="question bg-white p-3 border-bottom">
+                    <div class="d-flex flex-row justify-content-between align-items-center mcq">
+                        <h4>MCQ Quiz</h4><span>({{currentQuestion+1}} / 9)</span></div>
+                </div>
+                <div class="question bg-white p-3 border-bottom minHeight">
+                    <div class="d-flex flex-row align-items-center question-title">
+                        <h3 class="text-danger">Q.{{currentQuestion+1}}</h3>
+                        <h5 class="mt-1 ml-2">{{questionList[currentQuestion].explanation}}</h5>
+                    </div>
+                    <ng-container *ngFor="let opt of options[currentQuestion].options">
+                        <div class="ans ml-2">
+                            <label class="radio"> <input type="radio" name="brazil" value="brazil" /> <button (click)="answer(currentQuestion+1, opt)" >{{opt.text}}</button> </label>
+                        </div>
+                    </ng-container>
+                </div>
+                
+                <div class="d-flex flex-row justify-content-between align-items-center p-3 bg-white">
+                    
+                    <button [disabled]="currentQuestion===0" type="button" mat-raised-button color="accent" (click)="previusQuestion()">Previous</button>
+                    <button type="button" mat-raised-button color="primary" (click)="nextQuestion()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+<ng-container *ngIf="quizIsCompleted">
+    <div class="row d-flex justify-content-center mt-3 mb-5">
+        <div class="col-md-10 col-lg-10 ">
+            <h1 class="text-primary">
+                Congratulations! you have completed the quiz.
+
+            </h1>
+            <div style="font-size: 20px;" class="font-weight-bold mb-2">Your Score: {{score}}</div>
+            <p><b>Current total Answers:</b> {{currectAnswer}}</p>
+            <p><b>Incurrent answers:</b> {{inCurrectAnswer}}</p>
+        </div>
+    </div>
+    
+</ng-container>
+

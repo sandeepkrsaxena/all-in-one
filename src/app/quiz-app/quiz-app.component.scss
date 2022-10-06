@@ -1,0 +1,53 @@
+body{
+    background-color:#eee;
+}
+
+.minHeight{
+  min-height: 271px;
+}
+
+label.radio {
+  cursor: pointer;
+  width: 100%;
+}
+
+label.radio input {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+label.radio button {
+  padding: 4px 0px;
+  border: 1px solid #ccc;
+  display: block;
+  color: #000;
+  margin-top: 7px;
+  padding-left: 15px;
+  border-radius: 4px;
+  width: 100%;
+  text-align: left;
+  background: #fff;
+}
+
+label.radio input:checked + button {
+  border-color: red;
+  background-color: red;
+  color: #fff;
+}
+
+.ans {
+  margin-left: 36px !important;
+}
+
+.btn:focus {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+.btn:active {
+  outline: 0 !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Hey! please enter your name</h1>
+<div mat-dialog-content>
+<p>Make sure before stating the quiz need to be take required stuff.</p>
+<mat-form-field appearance="fill" class="w-100">
+  <mat-label>Name</mat-label>
+  <input matInput #dataName type="text">
+</mat-form-field>
+
+</div>
+<div mat-dialog-actions class="mb-0">
+  <button mat-raised-button color="primary" [mat-dialog-close]="dataName.value">Star Quiz</button>
+  <button mat-raised-button mat-dialog-close>Cancel</button>
+</div>
